@@ -14,8 +14,18 @@ namespace RomanNumbers
             var div5 = input / 5;
             var div50 = input / 50;
             var div100 = input / 100;
+            var div500 = input / 500;
+            var div1000 = input / 1000;
             string? result;
-			if (div100 == 1)
+            if (div1000 == 1)
+            {
+                result = M(div1000);
+            }
+            else if (div500 == 1)
+            {
+                result = D(div500);
+            }
+            else if (div100 == 1)
 			{
 				result = C(div100);
 			}
@@ -71,6 +81,14 @@ namespace RomanNumbers
 		{
 			return Repetir('C', quantity);
 		}
-	}
+        private static string D(int quantity)
+        {
+            return Repetir('D', quantity);
+        }
+        private static string M(int quantity)
+        {
+            return Repetir('M', quantity);
+        }
+    }
 }
 
