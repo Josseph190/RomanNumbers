@@ -1,10 +1,10 @@
 namespace RomanNumbersTest
 {
     [TestClass]
-    public class UnitTest1
+    public class RomanNumberTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Roman1()
         {
             var input = 1;
             var expected = "I";
@@ -13,39 +13,43 @@ namespace RomanNumbersTest
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void Roman2()
         {
             var input = 2;
             var expected = "II";
             var result = RomanNumbers.Converter.Convert(input);
             Assert.AreEqual(expected, result);
         }
+
         [TestMethod]
-        public void TestMethod3()
+        public void Roman5()
         {
             var input = 5;
             var expected = "V";
             var result = RomanNumbers.Converter.Convert(input);
             Assert.AreEqual(expected, result);
         }
+
         [TestMethod]
-        public void TestMethod4()
+        public void Roman10()
         {
             var input = 10;
             var expected = "X";
             var result = RomanNumbers.Converter.Convert(input);
             Assert.AreEqual(expected, result);
         }
+
         [TestMethod]
-        public void TestMethod5()
+        public void Roman4()
         {
             var input = 4;
             var expected = "IV";
             var result = RomanNumbers.Converter.Convert(input);
             Assert.AreEqual(expected, result);
         }
+
         [TestMethod]
-        public void TestMethod6()
+        public void Roman6()
         {
             var input = 6;
             var expected = "VI";
