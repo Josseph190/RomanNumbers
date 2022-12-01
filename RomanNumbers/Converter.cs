@@ -2,35 +2,34 @@
 {
     public class Converter
     {
-        public static string Convert(int input)
+        private static (char romanLetter, int remainder)[] rCV = { ('M', 1000), ('D', 500), ('C', 100), ('L', 50), ('X', 10), ('V', 5), ('I', 1) };
+        public static string Convert(int input, (char, int)[]? nextRCV = null)
         {
-            var result1000 = ToRoman(1000, 'M', input);
-            var result500 = ToRoman(500, 'D', input);
-            var result100 = ToRoman(100, 'C', input);
-            var result50 = ToRoman(50, 'L', input);
-            var result10 = ToRoman(10, 'X', input);
-            var result5 = ToRoman(5, 'V', input);
-            var result4 = (input > 3) ? "IV" : null;
-            var result1 = ToRoman(1, 'I', input);
-
-            return result1000 ?? result500 ?? result100 ?? result50 ?? result10 ?? result5 ?? result4 ?? result1 ?? "";
+            return Iterate(nextRCV ?? rCV, input) ?? "";
         }
 
-        private static string? ToRoman(int baseNum, char romanLetter, int input)
+        private static string? Iterate(IEnumerable<(char, int)> nextRCV, int? input)
         {
-            if (input < baseNum)
-            {
-                return null;
-            }
-            else
-            {
-                var quotient = input / baseNum;
-                var remainder = input % baseNum;
-                return Repetir(romanLetter, quotient) + Convert(remainder);
-            }
+            var first = nextRCV.FirstOrDefault();
+            var next = nextRCV.Skip(1).FirstOrDefault();
+            var (result, remainder) = ToRoman(first, next, input);
+            return result + Iterate(nextRCV.Skip(1), remainder);
         }
 
-        private static string Repetir(char c, int quantity) => new string(c, quantity);
+        private static (string? result, int? remainder) ToRoman((char romanLetter, int baseNum) first, (char romanLetter, int baseNum) next, int? input)
+        {
+            (string? letter, int? remainder) result1 = (string.Empty, null);
+            if (input >= first.baseNum - next.baseNum) {
+                result1 = (LetterString(next.romanLetter, 1),0);
+            }
+           var  result2 = input.HasValue && input >= first.baseNum 
+                ? (letters: LetterString(first.romanLetter, input.Value / first.baseNum), remainder: input.Value % first.baseNum)
+                : ((string ? letters, int? remainder))(null, null);
+
+            return (result1.letter + result2.letters, result2.remainder);
+        }
+
+        private static string LetterString(char c, int quantity) => new string(c, quantity);
     }
 }
 
