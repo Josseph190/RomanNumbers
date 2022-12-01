@@ -12,12 +12,23 @@ namespace RomanNumbers
         {
             var div10 = input / 10;
             var div5 = input / 5;
+            var div50 = input / 50;
+            var div100 = input / 100;
             string? result;
-            if (div10 == 1)
+			if (div100 == 1)
+			{
+				result = C(div100);
+			}
+			else if (div50 == 1)
+			{
+				result = L(div50);
+			}
+			else if (div10 == 1)
             {
                 result = X(div10);
             }
-            else if (div5 == 1)
+			
+			else if (div5 == 1)
             {
                 var remainder = input % 5;
                 result = V(div5) + I(remainder);
@@ -52,5 +63,14 @@ namespace RomanNumbers
         {
             return new string(c, quantity);
         }
-    }
+		private static string L(int quantity)
+		{
+			return Repetir('L', quantity);
+		}
+		private static string C(int quantity)
+		{
+			return Repetir('C', quantity);
+		}
+	}
 }
+

@@ -57,5 +57,24 @@ namespace RomanNumbersTest
             var result = RomanNumbers.Converter.Convert(input);
             Assert.AreEqual(expected, result);
         }
-    }
+
+
+		[TestMethod]
+		public void Roman50()
+		{
+			var input = 50;
+			var expected = "L";
+			var result = RomanNumbers.Converter.Convert(input);
+			Assert.AreEqual(expected, result);
+		}
+
+		[TestMethod]
+		public void Roman100()
+		{
+			var input = 100;
+			var expected = "C";
+			var result = RomanNumbers.Converter.Convert(input);
+			Assert.AreEqual(expected, result);
+		}
+	}
 }
