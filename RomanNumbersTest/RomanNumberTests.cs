@@ -23,10 +23,28 @@ namespace RomanNumbersTest
         }
 
         [TestMethod]
+        public void Roman4()
+        {
+            var input = 4;
+            var expected = "IV";
+            var result = RomanNumbers.Converter.Convert(input);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
         public void Roman5()
         {
             var input = 5;
             var expected = "V";
+            var result = RomanNumbers.Converter.Convert(input);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Roman6()
+        {
+            var input = 6;
+            var expected = "VI";
             var result = RomanNumbers.Converter.Convert(input);
             Assert.AreEqual(expected, result);
         }
@@ -41,25 +59,15 @@ namespace RomanNumbersTest
         }
 
         [TestMethod]
-        public void Roman4()
+        public void Roman13()
         {
-            var input = 4;
-            var expected = "IV";
+            var input = 13;
+            var expected = "XIII";
             var result = RomanNumbers.Converter.Convert(input);
             Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
-        public void Roman6()
-        {
-            var input = 6;
-            var expected = "VI";
-            var result = RomanNumbers.Converter.Convert(input);
-            Assert.AreEqual(expected, result);
-        }
-
-
-		[TestMethod]
 		public void Roman50()
 		{
 			var input = 50;
@@ -68,7 +76,17 @@ namespace RomanNumbersTest
 			Assert.AreEqual(expected, result);
 		}
 
-		[TestMethod]
+
+        [TestMethod]
+        public void Roman53()
+        {
+            var input = 53;
+            var expected = "LIII";
+            var result = RomanNumbers.Converter.Convert(input);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
 		public void Roman100()
 		{
 			var input = 100;

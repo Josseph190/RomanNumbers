@@ -1,94 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RomanNumbers
+﻿namespace RomanNumbers
 {
     public class Converter
     {
         public static string Convert(int input)
         {
-            var div10 = input / 10;
-            var div5 = input / 5;
-            var div50 = input / 50;
-            var div100 = input / 100;
-            var div500 = input / 500;
-            var div1000 = input / 1000;
-            string? result;
-            if (div1000 == 1)
+            var result1000 = ToRoman(1000, 'M', input);
+            var result500 = ToRoman(500, 'D', input);
+            var result100 = ToRoman(100, 'C', input);
+            var result50 = ToRoman(50, 'L', input);
+            var result10 = ToRoman(10, 'X', input);
+            var result5 = ToRoman(5, 'V', input);
+            var result4 = (input > 3) ? "IV" : null;
+            var result1 = ToRoman(1, 'I', input);
+
+            return result1000 ?? result500 ?? result100 ?? result50 ?? result10 ?? result5 ?? result4 ?? result1 ?? "";
+        }
+
+        private static string? ToRoman(int baseNum, char romanLetter, int input)
+        {
+            if (input < baseNum)
             {
-                result = M(div1000);
-            }
-            else if (div500 == 1)
-            {
-                result = D(div500);
-            }
-            else if (div100 == 1)
-			{
-				result = C(div100);
-			}
-			else if (div50 == 1)
-			{
-				result = L(div50);
-			}
-			else if (div10 == 1)
-            {
-                result = X(div10);
-            }
-			
-			else if (div5 == 1)
-            {
-                var remainder = input % 5;
-                result = V(div5) + I(remainder);
-            }
-            else if (input > 3)
-            {
-                result = "IV";
+                return null;
             }
             else
             {
-                result = I(input);
+                var quotient = input / baseNum;
+                var remainder = input % baseNum;
+                return Repetir(romanLetter, quotient) + Convert(remainder);
             }
-            return result;
         }
 
-        private static string X(int quantity)
-        {
-            return Repetir('X', quantity);
-        }
-
-        private static string V(int quantity)
-        {
-            return Repetir('V', quantity);
-        }
-
-        private static string I(int quantity)
-        {
-            return Repetir('I', quantity);
-        }
-
-        private static string Repetir(char c, int quantity)
-        {
-            return new string(c, quantity);
-        }
-		private static string L(int quantity)
-		{
-			return Repetir('L', quantity);
-		}
-		private static string C(int quantity)
-		{
-			return Repetir('C', quantity);
-		}
-        private static string D(int quantity)
-        {
-            return Repetir('D', quantity);
-        }
-        private static string M(int quantity)
-        {
-            return Repetir('M', quantity);
-        }
+        private static string Repetir(char c, int quantity) => new string(c, quantity);
     }
 }
 
