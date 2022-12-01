@@ -15,12 +15,12 @@ namespace RomanNumbers
             string? result;
             if (div10 == 1)
             {
-                result = new string('X', div10);
+                result = X(div10);
             }
             else if (div5 == 1)
             {
                 var remainder = input % 5;
-                result = new string('V', div5) + new string('I', remainder);
+                result = V(div5) + I(remainder);
             }
             else if (input > 3)
             {
@@ -28,9 +28,29 @@ namespace RomanNumbers
             }
             else
             {
-                result = new string('I', input);
+                result = I(input);
             }
             return result;
+        }
+
+        private static string X(int quantity)
+        {
+            return Repetir('X', quantity);
+        }
+
+        private static string V(int quantity)
+        {
+            return Repetir('V', quantity);
+        }
+
+        private static string I(int quantity)
+        {
+            return Repetir('I', quantity);
+        }
+
+        private static string Repetir(char c, int quantity)
+        {
+            return new string(c, quantity);
         }
     }
 }
