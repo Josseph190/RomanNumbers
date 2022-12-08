@@ -111,6 +111,14 @@ namespace RomanNumbersTest
             var result = RomanNumbers.Converter.Convert(input);
             Assert.AreEqual(expected, result);
         }
+        [TestMethod]
+        public void Roman90()
+        {
+            var input = 90;
+            var expected = "XC";
+            var result = RomanNumbers.Converter.Convert(input);
+            Assert.AreEqual(expected, result);
+        }
 
         [TestMethod]
 		public void Roman100()
@@ -120,7 +128,14 @@ namespace RomanNumbersTest
 			var result = RomanNumbers.Converter.Convert(input);
 			Assert.AreEqual(expected, result);
 		}
-
+        [TestMethod]
+        public void Roman400()
+        {
+            var input = 400;
+            var expected = "CD";
+            var result = RomanNumbers.Converter.Convert(input);
+            Assert.AreEqual(expected, result);
+        }
         [TestMethod]
         public void Roman500()
         {
@@ -129,7 +144,42 @@ namespace RomanNumbersTest
             var result = RomanNumbers.Converter.Convert(input);
             Assert.AreEqual(expected, result);
         }
+        [TestMethod]
+        public void Roman575()
+        {
+            var input = 575;
+            var expected = "DLXXV";
+            var result = RomanNumbers.Converter.Convert(input);
+            Assert.AreEqual(expected, result);
+        }
 
+        [TestMethod]
+        public void Roman800()
+        {
+            var input = 800;
+            var expected = "DCCC";
+            var result = RomanNumbers.Converter.Convert(input);
+            Assert.AreEqual(expected, result);
+        }
+
+
+        [TestMethod]
+        public void Roman833()
+        {
+            var input = 833;
+            var expected = "DCCCXXXIII";
+            var result = RomanNumbers.Converter.Convert(input);
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Roman900()
+        {
+            var input = 900;
+            var expected = "CM";
+            var result = RomanNumbers.Converter.Convert(input);
+            Assert.AreEqual(expected, result);
+        }
         [TestMethod]
         public void Roman1000()
         {
