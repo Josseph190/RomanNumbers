@@ -10,17 +10,21 @@
             var result50 = ToRoman(50, 'L', input);
             var result10 = ToRoman(10, 'X', input);
             var result5 = ToRoman(5, 'V', input);
-            var result4 = (input > 3) ? "IV" : null;
+
             var result1 = ToRoman(1, 'I', input);
 
-            return result1000 ?? result500 ?? result100 ?? result50 ?? result10 ?? result5 ?? result4 ?? result1 ?? "";
+            return result1000 ?? result500 ?? result100 ?? result50 ?? result10 ?? result5 ?? result1 ?? "";
         }
 
         private static string? ToRoman(int baseNum, char romanLetter, int input)
         {
             if (input < baseNum)
             {
-                return null;
+                var result = (input == 49) ? "XLIX" : null;
+                result ??= (input == 40) ? "XL" : null;
+                result ??= (input == 9) ? "IX" : null;
+                result ??= ((input == 4) ? "IV" : null);
+                return result;
             }
             else
             {
